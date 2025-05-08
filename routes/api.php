@@ -14,3 +14,10 @@ Route::group([
 ], function () {
     Route::get('/', 'ApiHomeController@index')->name('index');
 });
+
+Route::group([
+    'prefix' => 'brands',
+    'as' => 'api.',
+], function () {
+    Route::get('/', 'ApiBrandController@getAllBrands')->name('index');
+});
