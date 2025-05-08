@@ -32,8 +32,15 @@ class ApiVehicleController extends Controller
 
     public function getVehicleByPlate($code)
     {
-        $vehicle = Vehicle::where('placa', $code)->first();
-        $response = new VehicleResource($vehicle);
+        $response = [];
+        if ($code) {
+            $exist_vehicle = Vehicle::where('placa', $code)->exists();
+            if (!$exist_vehicle) {
+                return $this->showErrors('La placa no existe.', 202);
+            }
+            $vehicle = Vehicle::where('placa', $code)->first();
+            $response = new VehicleResource($vehicle);
+        }
 
         return $this->successfulMessageShowOne($response);
     }
