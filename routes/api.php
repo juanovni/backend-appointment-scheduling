@@ -8,6 +8,9 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::get('/test', function () {
-    dd(1);
+Route::group([
+    'prefix' => 'test',
+    'as' => 'api.',
+], function () {
+    Route::get('/', 'ApiHomeController@index')->name('index');
 });
