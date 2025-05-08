@@ -30,3 +30,11 @@ Route::group([
     Route::get('brand/{brand}', 'ApiModelsController@getModelsByBrand')->name('models_by_brands');
     Route::post('store/', 'ApiModelsController@store')->name('store');
 });
+
+Route::group([
+    'prefix' => 'vehicles',
+    'as' => 'api.',
+], function () {
+    Route::post('store/', 'ApiVehicleController@store')->name('store');
+    Route::get('plate/{code}', 'ApiVehicleController@getVehicleByPlate')->name('plate');
+});
