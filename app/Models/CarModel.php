@@ -20,6 +20,7 @@ class CarModel extends Model
         'id',
         'guid',
         'nombre',
+        'id_marca',
         'estado',
     ];
 

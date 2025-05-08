@@ -21,3 +21,12 @@ Route::group([
 ], function () {
     Route::get('/', 'ApiBrandController@getAllBrands')->name('index');
 });
+
+Route::group([
+    'prefix' => 'models',
+    'as' => 'api.',
+], function () {
+    Route::get('/', 'ApiModelsController@getAllModels')->name('index');
+    Route::get('brand/{brand}', 'ApiModelsController@getModelsByBrand')->name('models_by_brands');
+    Route::post('store/', 'ApiModelsController@store')->name('store');
+});
