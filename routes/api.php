@@ -38,3 +38,10 @@ Route::group([
     Route::post('store/', 'ApiVehicleController@store')->name('store');
     Route::get('plate/{code}', 'ApiVehicleController@getVehicleByPlate')->name('plate');
 });
+
+Route::group([
+    'prefix' => 'mechanical_workshops',
+    'as' => 'api.',
+], function () {
+    Route::get('/', 'MechanicalWorkshopController@index')->name('index');
+});

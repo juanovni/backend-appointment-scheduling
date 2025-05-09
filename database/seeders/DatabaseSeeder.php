@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(BrandSeeder::class);
-
+        $this->call(MechanicalWorkshopSeeder::class);
     }
 }
