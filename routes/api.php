@@ -45,3 +45,17 @@ Route::group([
 ], function () {
     Route::get('/', 'MechanicalWorkshopController@index')->name('index');
 });
+
+Route::group([
+    'prefix' => 'services',
+    'as' => 'api.',
+], function () {
+    Route::get('/', 'ApiServicesController@getServices')->name('index');
+});
+
+Route::group([
+    'prefix' => 'maintenances',
+    'as' => 'api.',
+], function () {
+    Route::get('/', 'ApiMaintenanceController@getMaintenance')->name('index');
+});
