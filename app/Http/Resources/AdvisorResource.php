@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MechanicalWorkshopResource extends JsonResource
+class AdvisorResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,16 +14,13 @@ class MechanicalWorkshopResource extends JsonResource
      */
     public function toArray($request)
     {
+
         return [
             'id' => $this->id,
             'guid' => $this->guid,
             'nombre' => $this->nombre,
-            'empresa' => $this->empresa,
-            'direccion' => $this->direccion,
-            'ciudad' => $this->ciudad,
-            'telefono' => $this->telefono,
+            'taller' => MechanicalWorkshopResource::collection($this->mechanicalWorkshop),
             'estado' => (int)$this->estado,
-            'mantenimientos' => BusinessWorkshopResource::collection($this->businessWorkshops)
         ];
     }
 }

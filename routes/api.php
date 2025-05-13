@@ -59,3 +59,10 @@ Route::group([
 ], function () {
     Route::get('/', 'ApiMaintenanceController@getMaintenance')->name('index');
 });
+
+Route::group([
+    'prefix' => 'advisors',
+    'as' => 'api.',
+], function () {
+    Route::get('mechanical-workshop/', 'ApiAdvisorController@getAdvisorsByMechanicalWorkshop')->name('mechanical.workshop');
+});
