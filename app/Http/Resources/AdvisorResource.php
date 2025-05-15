@@ -19,7 +19,7 @@ class AdvisorResource extends JsonResource
             'id' => $this->id,
             'guid' => $this->guid,
             'nombre' => $this->nombre,
-            'taller' => MechanicalWorkshopResource::collection($this->mechanicalWorkshop),
+            //'taller' => MechanicalWorkshopResource::collection($this->mechanicalWorkshop),
             'estado' => (int)$this->estado,
         ];
     }

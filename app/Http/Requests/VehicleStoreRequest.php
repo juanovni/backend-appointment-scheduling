@@ -34,7 +34,7 @@ class VehicleStoreRequest extends FormRequest
                 'string',
                 'min:4',
                 'max:10',
-                'unique:age_vehiculos,placa'
+                #'unique:age_vehiculos,placa'
             ],
             'telefono' => [
                 'required',
