@@ -172,3 +172,8 @@ input[type=number] {
 #orders-loading{
     display: none;
 }
+
+.appcontainer-fixed{
+    padding-left: 90px !important;
+    padding-right: 90px !important;
+}

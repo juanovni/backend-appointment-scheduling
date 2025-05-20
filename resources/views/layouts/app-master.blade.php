@@ -50,12 +50,12 @@
                 <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
                     <div class="d-flex flex-column flex-column-fluid">
                         <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
-                            <div id="kt_app_toolbar_container" class="app-container container-fluid d-flex flex-stack">
+                            <div id="kt_app_toolbar_container" class="app-container container-fluid  appcontainer-fixed">
                                 @yield('breadcrumb')
                             </div>
                         </div>
                         <div id="kt_app_content" class="app-content flex-column-fluid">
-                            <div id="kt_app_content_container" class="app-container container-fluid">
+                            <div id="kt_app_content_container" class="app-container container-fluid  appcontainer-fixed">
                                 @include('layouts.partials.messages')
                                 @yield('content')
                             </div>
