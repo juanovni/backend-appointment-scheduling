@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="menu-item">
-                        <a class="menu-link" href="">
+                        <a class="menu-link" href="{{ route('brands.index') }}">
                             <span class="menu-icon">
                                 <i class="ki-duotone ki-finance-calculator fs-2">
                                     <span class="path1"></span>
@@ -34,7 +34,7 @@
                                     <span class="path7"></span>
                                 </i>
                             </span>
-                            <span class="menu-title">Cotizador</span>
+                            <span class="menu-title">Marcas</span>
                         </a>
                     </div>
 
