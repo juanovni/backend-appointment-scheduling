@@ -1,0 +1,179 @@
+.w-65 {
+    width: 65%!important;
+}
+/* input[type="password"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.2rem;
+    color: #495057;
+    display: block;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 0.3rem 0.85rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    width: 100%;
+} */
+
+input[type="password"]:focus {
+    background-color: #fff;
+    border-color: #9dbeee;
+    box-shadow: 0 0 0 0.2rem rgba(59,125,221,.25);
+    color: #495057;
+    outline: 0;
+}
+
+#liveIndicator {
+    height: auto;
+	width: auto;
+    min-width: 45px;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: grey;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 10px;
+	position: absolute;
+    margin: 10px;
+}
+
+#liveShared{
+    margin: 45px 0px 0px 10px;
+}
+
+#liveLikes {
+    margin: 80px 0px 0px 10px;
+}
+
+#liveViews {
+    margin: 115px 0px 0px 10px;
+}
+
+div.share-likes-streaming{
+    height: auto;
+	width: auto;
+    min-width: 45px;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #639;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 10px;
+	position: absolute;
+}
+
+div.status_streaming span {
+    animation: blink 2s linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#loading_streaming{
+    display: none;
+}
+
+button.sendProduct{
+    border: 1px solid;
+}
+
+#localVideo{
+    /* border: 0 !important;
+    padding: 0 !important; */
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid #F1F1F2;
+}
+
+.live_product_image{
+    height: 100px;
+    width: 100px !important;
+    object-fit: cover;
+}
+
+tr.row-updated td:first-child {
+    border-radius: 15px 0 0 15px;
+}
+
+tr.row-updated td:last-child {
+    border-radius: 0 15px 15px 0;
+}
+
+table#kt_table_stores tr td:first-child,
+table#kt_table_stores tr th:first-child,
+table#kt_ecommerce_products_table tr td:first-child,
+table#kt_ecommerce_products_table tr th:first-child{
+    padding-left: 10px !important;
+}
+
+table#kt_table_stores tr td:last-child,
+table#kt_table_stores tr th:last-child,
+table#kt_ecommerce_products_table tr td:last-child,
+table#kt_ecommerce_products_table tr th:last-child{
+    padding-right: 10px !important;
+}
+
+.show_twitch_info img{
+    width: 100% !important;
+    height: auto !important;
+}
+
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-info-light);
+}
+
+#dashboard-loading,
+#manifest-loading{
+    display: none;
+}
+
+.role-card:hover{
+    background-color: #fff;/* #AAAAAA;*/
+    box-shadow: inset 0 0 5px #ffb600;
+}
+
+.not_visible {
+    visibility: hidden !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.text-darkorange{
+    color: #f47000;
+}
+
+#orders-loading{
+    display: none;
+}
+
+.appcontainer-fixed{
+    padding-left: 90px !important;
+    padding-right: 90px !important;
+}
