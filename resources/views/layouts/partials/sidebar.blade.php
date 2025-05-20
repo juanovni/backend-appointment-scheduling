@@ -48,24 +48,24 @@
                                     <span class="path4"></span>
                                 </i>
                             </span>
-                            <span class="menu-title">Envíos</span>
+                            <span class="menu-title">Marcas</span>
                             <span class="menu-arrow"></span>
                         </span>
                         <div class="menu-sub menu-sub-accordion">
                             <div class="menu-item">
-                                <a class="menu-link" href="">
+                                <a class="menu-link" href="{{ route('brands.index') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
-                                    <span class="menu-title">Crear Ordenes</span>
+                                    <span class="menu-title">Crear Marcas</span>
                                 </a>
                             </div>
                             <div class="menu-item">
-                                <a class="menu-link" href="">
+                                <a class="menu-link" href="{{ route('brands.index') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
-                                    <span class="menu-title">Lista de Ordenes</span>
+                                    <span class="menu-title">Lista de Marcas</span>
                                 </a>
                             </div>
                         </div>

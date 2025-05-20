@@ -88,8 +88,6 @@
                                 <a href="https://picker.grelive.com/users/12" class="text-gray-800 text-hover-primary mb-1 user_name">
                                     <span id="brand_name"> {{ $brand->nombre }}</span>
                                 </a>
-                                <!-- <span> {{ $brand->guid }}
-                                </span> -->
                             </div>
                         </td>
                         <td class="text-center pe-0">{{ $brand->carModels->count() }}</td>
@@ -106,7 +104,7 @@
                                 <i class="ki-duotone ki-down fs-5 ms-1"></i></a>
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
                                 <div class="menu-item px-3">
-                                    <a href="" class="menu-link px-3">Editar</a>
+                                    <a href="javascript:void(0);" data-brand_id="{{$brand->id}}" data-bs-toggle="modal" data-bs-target="#kt_modal_edit_brand" class="menu-link px-3 handledBrandClick">Editar</a>
                                 </div>
                                 <div class="menu-item px-3">
                                     <a href="#" class="menu-link px-3" data-id="{{$brand->id}}" data-kt-brands-table-filter="delete_row">Eliminar</a>
@@ -138,41 +136,138 @@
                 <!--end::Close-->
             </div>
             <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
+                {{ html()->form('POST', '/brands/store')->id('kt_modal_add_brand')->open() }}
                 <div class="mb-13 text-center">
                     <h1 class="mb-3">Agregar Marca</h1>
                 </div>
-                <div class="d-flex flex-column mb-8 fv-row">
-                    <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                        <span class="ms-1" data-bs-toggle="tooltip" title="Especifique un nombre único para el plan de tarifas a utilizar">
-                            <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                                <span class="path3"></span>
-                            </i>
-                        </span>
-                    </label>
+                <div class="d-flex flex-column mb-8">
+                    <div class="fv-row w-100 flex-md-root">
 
+                        {{ html()->label()->text('Nombre de la marca')->for('nombre')->class('required form-label') }}
+                        {{ html()
+                            ->text('nombre')
+                            ->placeholder('Ingrese la marca del vehículo')
+                            ->class(['form-control', 'bg-transparent']) 
+                        }}
+                    </div>
                 </div>
                 <div class="d-flex flex-column mb-8">
-
+                    {{ html()->label()->text('Estado')->for('status')->class('form-label') }}
+                    {{ html()
+                            ->select('estado', ['1' => 'Activo', '0' => 'Inactivo'])
+                            ->class(['form-control', 'bg-transparent','form-select mb-2'])
+                            ->attribute('data-control', 'select2')
+                            ->attribute('data-hide-search', 'true')
+                            ->attribute('data-placeholder', 'Seleccione una opción')
+                        }}
                 </div>
-                <div class="d-flex flex-column mb-8">
-
-                </div>
-
                 <div class="d-flex justify-content-center">
-                    <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Cancelar</button>
-
+                    @include('components.form.button',
+                    array(
+                    'buttons' => array(
+                    array(
+                    'button_label' => 'Cancelar',
+                    'type' => 'reset',
+                    'class' => 'btn btn-light me-5',
+                    'tag' => 'a',
+                    'from_modal' => true,
+                    ),
+                    array(
+                    'button_label' => 'Crear Marca',
+                    'type' => 'button',
+                    'class' => 'btn btn-primary',
+                    'tag' => 'a',
+                    'id' => 'kt_brand_save_submit',
+                    'route' => route('brands.store')
+                    )
+                    )
+                    )
+                    )
                 </div>
+                {{ html()->closeModelForm() }}
             </div>
         </div>
     </div>
+
+</div>
+
+<div class="modal fade" id="kt_modal_edit_brand" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+        <div class="modal-content rounded">
+            <div class="modal-header pb-0 border-0 justify-content-end">
+                <!--begin::Close-->
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="ki-duotone ki-cross fs-1">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                    </i>
+                </div>
+                <!--end::Close-->
+            </div>
+            <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
+                {{ html()->form('PUT', '/brands/update')->id('kt_modal_edit_brand')->open() }}
+                <div class="mb-13 text-center">
+                    <h1 class="mb-3">Editar Marca</h1>
+                </div>
+                <div class="d-flex flex-column mb-8">
+                    <div class="fv-row w-100 flex-md-root">
+
+                        {{ html()->label()->text('Nombre de la marca')->for('nombre')->class('required form-label') }}
+                        {{ html()
+                            ->text('edit_nombre')
+                            ->placeholder('Ingrese la marca del vehículo')
+                            ->class(['form-control', 'bg-transparent']) 
+                        }}
+                        {{ html()
+                        ->hidden('brand_id')
+                        ->class(['form-control', 'bg-transparent']) 
+                    }}
+                    </div>
+                </div>
+                <div class="d-flex flex-column mb-8">
+                    {{ html()->label()->text('Estado')->for('status')->class('form-label') }}
+                    {{ html()
+                            ->select('edit_estado', ['1' => 'Activo', '0' => 'Inactivo'])
+                            ->class(['form-control', 'bg-transparent','form-select mb-2'])
+                            ->attribute('data-control', 'select2')
+                            ->attribute('data-hide-search', 'true')
+                            ->attribute('data-placeholder', 'Seleccione una opción')
+                        }}
+                </div>
+                <div class="d-flex justify-content-center">
+                    @include('components.form.button',
+                    array(
+                    'buttons' => array(
+                    array(
+                    'button_label' => 'Cancelar',
+                    'type' => 'reset',
+                    'class' => 'btn btn-light me-5',
+                    'tag' => 'a',
+                    'from_modal' => true,
+                    ),
+                    array(
+                    'button_label' => 'Actualizar Marca',
+                    'type' => 'button',
+                    'class' => 'btn btn-primary',
+                    'tag' => 'a',
+                    'id' => 'kt_brand_update_submit',
+                    )
+                    )
+                    )
+                    )
+                </div>
+                {{ html()->closeModelForm() }}
+            </div>
+        </div>
+    </div>
+
 </div>
 @endsection
 
 @section('top_js_page')
 <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/custom/apps/brands/list.js') }}"></script>
+<script src="{{ asset('js/database-script.js') }}"></script>
 
 <script>
     $(document).ready(function() {
@@ -181,6 +276,55 @@
             let column = table.column(el.getAttribute('data-column'));
             column.visible(!column.visible());
         });
+    });
+
+    /* Only for pages with the form validated by the plugin  */
+    let formID = 'kt_modal_add_brand';
+    let buttonID = 'kt_brand_save_submit';
+    let fields = {
+        nombre: {
+            validators: {
+                notEmpty: {
+                    message: "El nombre de la marca es requerida"
+                }
+            }
+        }
+    };
+    validatedForm(formID, buttonID, fields);
+
+
+    let formEditID = 'kt_modal_edit_brand';
+    let buttonEditID = 'kt_brand_update_submit';
+    let fieldsEdit = {
+        edit_nombre: {
+            validators: {
+                notEmpty: {
+                    message: "El nombre del plan tarifario es requerida"
+                }
+            }
+        },
+    };
+
+    validatedForm(formEditID, buttonEditID, fieldsEdit);
+
+    $(".handledBrandClick").on("click", function(e) {
+        let brandId = this.getAttribute('data-brand_id');
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            method: "GET",
+            url: "brands/edit/" + brandId,
+            datatype: 'json',
+            success: function(data) {
+                if (typeof data != 'undefined') {
+                    dataResponse = data;
+                    $("#edit_nombre").val(data.nombre);
+                    $("#brand_id").val(data.id);
+                }
+            }
+        });
+
     });
 </script>
 @endsection

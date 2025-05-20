@@ -27,4 +27,22 @@ class BrandService
 
         return $brand;
     }
+
+    public function edit($id)
+    {
+        $brand = Brand::where('id', $id)->first();
+
+        return $brand;
+    }
+
+    public function update(Request $request)
+    {
+        $brand = Brand::where('id', $request->brand_id)->first();
+        if ($brand) {
+            $brand->nombre = $request->edit_nombre;
+            $brand->estado = $request->edit_estado;
+            $brand->save();
+        }
+        return $brand;
+    }
 }

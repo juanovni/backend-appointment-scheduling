@@ -16,6 +16,9 @@ Route::group(['namespace' => 'App\Http\Controllers\web'], function () {
         ],
         function () {
             Route::get('/', 'WebBrandsController@index')->name('index');
+            Route::post('store/', 'WebBrandsController@store')->name('store');
+            Route::get('edit/{brand}', 'WebBrandsController@edit')->name('edit');
+            Route::put('/update', 'WebBrandsController@update')->name('update');
         }
     );
 });
